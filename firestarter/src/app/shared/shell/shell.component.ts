@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-shell',
@@ -10,11 +10,13 @@ import { AsyncPipe, NgIf } from '@angular/common';
   styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent {
-  private breakpointObserver = inject(BreakpointObserver);
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset])
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+
+  constructor(private breakpointObserver: BreakpointObserver, public afAuth: AngularFireAuth) {}
+
 }
