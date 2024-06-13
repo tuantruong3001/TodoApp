@@ -31,25 +31,11 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
-      - name: List dist contents
-        run: ls dist
 
       - name: Upload artifact
-        run: |
-          echo ::group::Archive artifact
-          tar \
-            --dereference --hard-dereference \
-            --directory "$INPUT_PATH" \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            .
-          echo ::endgroup::
-        env:
-          GITHUB_PAGES: true
-          INPUT_PATH: ./dist/firestarter
-        working-directory: ${{ github.workspace }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
