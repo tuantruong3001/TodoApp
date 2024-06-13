@@ -48,6 +48,9 @@ jobs:
       - name: Check total size
         run: du -sh ./dist
 
+      - name: Check file permissions
+        run: find ./dist -type f -exec ls -l {} \;
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
