@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Build
-          run: npm run build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -37,6 +37,7 @@ jobs:
         with:
           name: github-pages
           path: ./dist      
+
       - name: Check for hard links and symlinks
         run: |
           echo "Checking for hard links..."
