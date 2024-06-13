@@ -31,7 +31,7 @@
 		  <a mat-button routerLink="/login" *ngIf="!(afAuth.authState | async)">🔑 Login</a>
 		  <a mat-button routerLink="/login" *ngIf="afAuth.authState | async as user" >
 			<img class="avatar" [src]="user.photoURL || 'assets/default-user.svg'">
-			Profile
+				Profile
 		  </a>
   
 		</div>
@@ -42,7 +42,7 @@
 		
 		<mat-menu #menu="matMenu">
 		
-		  <a mat-menu-item href="https://github.com/tuantruong3001">
+		  <a mat-menu-item href="https://github.com/tuantruong3001/TodoApp">
 			<i>💾</i>
 			<span>Code on Github</span>
 		  </a>

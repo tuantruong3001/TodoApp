@@ -2,12 +2,12 @@
 	<mat-card-header>
 	  <!-- Slot for the handle -->
 	  <ng-content></ng-content>
-	  <mat-card-title>
-		{{ board?.title }}
-	  </mat-card-title>
-	  <mat-card-subtitle>
-		{{ board?.id }}
-	  </mat-card-subtitle>
+			<mat-card-title style="display: flex;justify-content: space-between; width: 100%;">
+				{{ board?.title }}
+			  </mat-card-title>
+			  <mat-card-subtitle>
+				{{ board?.id }}
+			  </mat-card-subtitle>
 	</mat-card-header>
   
 	<div
@@ -20,7 +20,7 @@
 		cdkDrag
 		*ngFor="let task of board?.tasks; let i = index"
 		(click)="openDialog(task, i)">
-		<mat-card [ngClass]="task?.label"> {{ task?.description }} </mat-card>
+		<mat-card [ngClass]="task?.label" style="padding: 10px;"> {{ task?.description }} </mat-card>
 	  </div>
   
 	  <button mat-stroked-button (click)="openDialog()">
