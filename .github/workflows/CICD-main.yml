@@ -34,8 +34,24 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist/firestarter'
+      - name: List dist contents
+        run: ls dist
+
+      - name: Archive artifact
+        run: |
+          echo ::group::Archive artifact
+          tar \
+            --dereference --hard-dereference \
+            --directory "$INPUT_PATH" \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            .
+          echo ::endgroup::
+        env:
+          GITHUB_PAGES: true
+          INPUT_PATH: ./dist/firestarter
+        working-directory: ${{ github.workspace }}
 
       - name: Deploy to GitHub Pages
         id: deployment
