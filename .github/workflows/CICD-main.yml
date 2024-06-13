@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: ./dist      
+          path: './dist'     
 
       - name: Check for hard links and symlinks
         run: |
@@ -53,4 +53,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.TOKEN_APP_GITHUB }}
-          publish_dir: ./dist
+          publish_dir: './dist'
