@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+          run: npm run build -- --delete-output-path
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
