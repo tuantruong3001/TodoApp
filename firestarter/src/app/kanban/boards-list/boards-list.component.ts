@@ -21,7 +21,11 @@ export class BoardsListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.boardService
       .getUserBoards()
-      .subscribe(boards => (this.boards = boards));
+      .subscribe(boards => {
+        (this.boards = boards)
+      });
+
+      
   }
 
   drop(event: CdkDragDrop<string[]>) {

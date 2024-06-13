@@ -16,6 +16,7 @@ export class BoardService {
    */
   async createBoard(data: Board) {
     const user = await this.afAuth.currentUser;
+    console.log({ user })
     return this.db.collection('boards').add({
       ...data,
       uid: user?.uid,

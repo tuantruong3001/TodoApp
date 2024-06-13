@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from 'src/app/services/seo.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { tap } from 'rxjs/operators';
 import { CustomerDataService } from '../customer-data.service';
 
@@ -10,7 +10,7 @@ import { CustomerDataService } from '../customer-data.service';
   styleUrls: ['./list-page.component.scss']
 })
 export class ListPageComponent implements OnInit {
-  customers;
+  customers: any;
 
   constructor(private seo: SeoService, private db: AngularFirestore, public data: CustomerDataService) {}
 

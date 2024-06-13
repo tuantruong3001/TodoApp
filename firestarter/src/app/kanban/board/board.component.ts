@@ -12,7 +12,7 @@ import { Task } from '../board.model';
 })
 export class BoardComponent {
   @Input() board: any;
-
+  
   taskDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.board.tasks, event.previousIndex, event.currentIndex);
     this.boardService.updateTasks(this.board.id, this.board.tasks);
@@ -47,5 +47,7 @@ export class BoardComponent {
     this.boardService.deleteBoard(this.board.id);
   }
 
-  constructor(private boardService: BoardService, private dialog: MatDialog) {}
+  constructor(private boardService: BoardService, private dialog: MatDialog) {
+    console.log(this.board);
+  }
 }
