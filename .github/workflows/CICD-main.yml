@@ -43,7 +43,10 @@ jobs:
           echo "Checking for hard links..."
           find ./dist -type f -links +1
           echo "Checking for symlinks..."
-          find ./dist -type l
+          find ./dist -type latest
+
+      - name: Check total size
+        run: du -sh ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
