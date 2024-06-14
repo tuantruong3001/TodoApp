@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, InitialNavigation } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AuthGuard } from './user/auth.guard';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'kanban',
     loadChildren: () =>
       import('./kanban/kanban.module').then(m => m.KanbanModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'customers',
@@ -24,8 +24,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    //initialNavigation: 'enabled'
-})],
+      initialNavigation: 'enabled' as InitialNavigation
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
